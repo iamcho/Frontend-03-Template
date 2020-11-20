@@ -12,7 +12,6 @@
     }
     function fns(fn) {
       let args = [];
-
       return function temp(...newArgs) {
         console.log(newArgs);
         if (newArgs.length) {
@@ -20,13 +19,14 @@
           return temp;
         } else {
           console.log(args);
+          console.log(this);
           let val = fn.apply(this, args);
           args = [];
           return val;
         }
       };
     }
-    let addFns = fns(add);
+    let addFns = fns(add); 
     console.log(addFns(8)(2)(3)(55)());
   </script>
 </html>
